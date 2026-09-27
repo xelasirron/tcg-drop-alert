@@ -18,8 +18,8 @@ products:
   # 1) A product page that already exists but is "coming soon"/out of stock.
   #    Pokémon Center also shows a queue page on big drops – that triggers an
   #    alert too ("QUEUE IS OPEN").
-  - name: "Pokémon Center UK – REPLACE ME"
-    url: "https://www.pokemoncenter.com/en-gb/product/REPLACE-ME"
+  - name: "Pokémon Center UK - Delta Reign Elite Trainer Box"
+    url: "https://www.pokemoncenter.com/product/10-10438-112"
     enabled: false
 
   - name: "Smyths – REPLACE ME"
