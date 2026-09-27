@@ -1,0 +1,49 @@
+name: TCG drop alert
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"     # wakes up every 5 min; only one run at a time (below)
+  workflow_dispatch:          # "Run workflow" button for manual runs
+
+# One long run at a time. A new scheduled run waits for the current one,
+# so checking is near-continuous (about once a minute).
+concurrency:
+  group: tcg-drop-alert
+  cancel-in-progress: false
+
+permissions:
+  contents: write            # lets the bot save state.json so it doesn't re-alert
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Watch products
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        # Manual runs do a single quick pass; scheduled runs keep going ~5h40m.
+        run: python monitor.py --loop ${{ github.event_name == 'schedule' && '340' || '0' }}
+
+      - name: Save state
+        if: always()
+        run: |
+          git config user.name  "tcg-drop-alert"
+          git config user.email "tcg-drop-alert@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update stock state [skip ci]"
+          git pull --rebase --autostash || true
+          git push || true

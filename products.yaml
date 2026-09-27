@@ -1,0 +1,42 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# What to watch. Add as many products as you like – one block each.
+# Paste the product page URL from the shop. After editing, commit the file.
+#
+#   name:  anything you like – it's the notification title
+#   url:   the exact product page (or a search/category page for text_appears)
+#   mode:  (optional) "text_appears" = alert when any watch_text shows up on the
+#          page. Great for products that aren't listed yet – point it at a
+#          search results page.
+#   in_stock_text / out_of_stock_text: (optional) exact phrases on that page,
+#          if the automatic detection gets it wrong (check with --test).
+#   enabled: false  = temporarily ignore this entry
+# ─────────────────────────────────────────────────────────────────────────────
+
+check_interval_seconds: 60   # how often each product is checked while running
+
+products:
+  # 1) A product page that already exists but is "coming soon"/out of stock.
+  #    Pokémon Center also shows a queue page on big drops – that triggers an
+  #    alert too ("QUEUE IS OPEN").
+  - name: "Pokémon Center UK – REPLACE ME"
+    url: "https://www.pokemoncenter.com/en-gb/product/REPLACE-ME"
+    enabled: false
+
+  - name: "Smyths – REPLACE ME"
+    url: "https://www.smythstoys.com/uk/en-gb/REPLACE-ME"
+    enabled: false
+
+  - name: "Argos – REPLACE ME"
+    url: "https://www.argos.co.uk/product/REPLACE-ME"
+    enabled: false
+
+  - name: "GAME – REPLACE ME"
+    url: "https://www.game.co.uk/en/REPLACE-ME"
+    enabled: false
+
+  # 2) Product not listed anywhere yet? Watch a search page for its name.
+  - name: "Smyths search – new set appears"
+    url: "https://www.smythstoys.com/uk/en-gb/search/?text=pokemon+elite+trainer+box"
+    mode: text_appears
+    watch_text: ["REPLACE WITH SET NAME"]
+    enabled: false
