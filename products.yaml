@@ -37,19 +37,19 @@ products:
 
   # 2) Product not listed anywhere yet? Watch a search page for its name.
   - name: "Pokemon Centre Delta Reign Booster Box Stocked"
-    url: "https://www.pokemoncenter.com/product/10-10439-109"
+    url: "https://www.pokemoncenter.com/en-gb/product/10-10446-120"
     mode: text_appears
     watch_text: ["Delta"]
     enabled: true
     
   - name: "Pokemon Centre Delta Reign ETB Stocked"
-    url: "https://www.pokemoncenter.com/product/10-10438-112"
+    url: "https://www.pokemoncenter.com/en-gb/product/10-10438-112"
     mode: text_appears
     watch_text: ["Delta"]
     enabled: true
     
   - name: "Pokemon Centre Delta Reign Booster bundle"
-    url: "https://www.pokemoncenter.com/product/10-10446-120"
+    url: "https://www.pokemoncenter.com/en-gb/product/10-10439-109"
     mode: text_appears
     watch_text: ["Delta"]
     enabled: true
