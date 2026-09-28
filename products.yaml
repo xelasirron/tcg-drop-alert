@@ -12,7 +12,7 @@
 #   enabled: false  = temporarily ignore this entry
 # ─────────────────────────────────────────────────────────────────────────────
 
-check_interval_seconds: 60   # how often each product is checked while running
+check_interval_seconds: 30   # how often each product is checked while running
 
 products:
   # 1) A product page that already exists but is "coming soon"/out of stock.
@@ -20,12 +20,13 @@ products:
   #    alert too ("QUEUE IS OPEN").
   - name: "Pokémon Center UK - Delta Reign Elite Trainer Box"
     url: "https://www.pokemoncenter.com/product/10-10438-112"
-    enabled: false
-
-  - name: "Smyths – REPLACE ME"
-    url: "https://www.smythstoys.com/uk/en-gb/REPLACE-ME"
-    enabled: false
-
+    enabled: true
+  - name: "Smyths - Pokémon Trading Card Game (TCG): 30th Celebration Ultra-Premium Collection Day Edition"
+    url: "https://www.smythstoys.com/uk/en-gb/toys/action-figures-and-playsets/pokemon-toys/pokemon-trading-card-game-tcg/pokemon-trading-card-game-tcg-30th-celebration-ultra-premium-collection-day-edition/p/264502"
+    enabled: true
+  - name: "Smyths - Pokémon Trading Card Game (TCG): 30th Celebration Ultra-Premium Collection Night Edition"
+    url: "https://www.smythstoys.com/uk/en-gb/toys/action-figures-and-playsets/pokemon-toys/pokemon-trading-card-game-tcg/pokemon-trading-card-game-tcg-30th-celebration-ultra-premium-collection-night-edition/p/264513"
+    enabled: true
   - name: "Argos – REPLACE ME"
     url: "https://www.argos.co.uk/product/REPLACE-ME"
     enabled: false
@@ -35,8 +36,20 @@ products:
     enabled: false
 
   # 2) Product not listed anywhere yet? Watch a search page for its name.
-  - name: "Smyths search – new set appears"
-    url: "https://www.smythstoys.com/uk/en-gb/search/?text=pokemon+elite+trainer+box"
+  - name: "Pokemon Centre Delta Reign Booster Box Stocked"
+    url: "https://www.pokemoncenter.com/product/10-10439-109"
     mode: text_appears
-    watch_text: ["REPLACE WITH SET NAME"]
-    enabled: false
+    watch_text: ["Delta"]
+    enabled: true
+    
+  - name: "Pokemon Centre Delta Reign ETB Stocked"
+    url: "https://www.pokemoncenter.com/product/10-10438-112"
+    mode: text_appears
+    watch_text: ["Delta"]
+    enabled: true
+    
+  - name: "Pokemon Centre Delta Reign Booster bundle"
+    url: "https://www.pokemoncenter.com/product/10-10446-120"
+    mode: text_appears
+    watch_text: ["Delta"]
+    enabled: true
